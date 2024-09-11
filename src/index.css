@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities;    
+
+
+#test {
+    width: 50px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+  }
+  
