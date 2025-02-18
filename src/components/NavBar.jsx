@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { assets } from '../assets/assets'; // Adjust the path to your assets
+import { assets } from '../assets/assets';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const NavBar = () => {
     const navigate = useNavigate();
     const [showMenu, setShowMenu] = useState(false);
-    const [token, setToken] = useState(true); // Assume user is logged in for the profile section
-    const dropdownRef = useRef(null); // To reference the dropdown
+    const [token, setToken] = useState(true); 
+    const dropdownRef = useRef(null); 
 
-    // Close the dropdown when clicking outside
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                setShowMenu(false); // Close the dropdown if clicking outside
+                setShowMenu(false); 
             }
         };
         
@@ -26,12 +26,10 @@ const NavBar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid d-flex align-items-center">
-                {/* Logo */}
                 <NavLink className="navbar-brand d-flex align-items-center" to="/">
                     <img src={assets.logo} alt="Logo" style={{ height: '40px' }} /> {/* Adjust logo height */}
                 </NavLink>
 
-                {/* Hamburger for mobile */}
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -69,7 +67,6 @@ const NavBar = () => {
                         </li>
                     </ul>
 
-                    {/* Admin Panel Button */}
                     <div className="d-flex align-items-center ms-3">
                         <button
                             className="btn btn-outline-primary"
@@ -79,26 +76,24 @@ const NavBar = () => {
                         </button>
                     </div>
 
-                    {/* Profile section */}
                     <div className="d-flex align-items-center ms-4 position-relative" ref={dropdownRef}>
                         {token ? (
                             <div
                                 className="d-flex align-items-center"
-                                onClick={() => setShowMenu(!showMenu)} // Toggle the dropdown on click
+                                onClick={() => setShowMenu(!showMenu)} 
                             >
                                 <img
-                                    src={assets.profile_pic} // Profile image path
+                                    src={assets.profile_pic} 
                                     alt="Profile"
                                     className="rounded-circle"
                                     style={{ width: '40px', height: '40px', objectFit: 'cover' }}
                                 />
                                 <img
-                                    src={assets.dropdown_icon} // Dropdown icon path
+                                    src={assets.dropdown_icon} 
                                     alt="Dropdown Icon"
                                     style={{ width: '15px', height: '15px', marginLeft: '10px' }}
                                 />
 
-                                {/* Dropdown Menu */}
                                 {showMenu && (
                                     <div
                                         className="position-absolute bg-white shadow p-3 rounded"
@@ -109,19 +104,18 @@ const NavBar = () => {
                                             className="mb-2"
                                             style={{ cursor: 'pointer' }}
                                         >
-                                            My Profile
+                                            MyProfile
                                         </p>
                                         <p
                                             onClick={() => navigate('/my-appointments')}
                                             className="mb-2"
                                             style={{ cursor: 'pointer' }}
                                         >
-                                            My Appointment
+                                            MyAppointment
                                         </p>
                                         <p
                                             onClick={() => {
-                                                /* Add logout logic */
-                                                setToken(false); // Simulate logout
+                                                setToken(false); 
                                                 navigate('/login');
                                             }}
                                             className="mb-0"
